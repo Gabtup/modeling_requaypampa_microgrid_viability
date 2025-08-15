@@ -33,6 +33,9 @@ This folder contains the codes and resulting data required to develop the photov
  * Codes:
    - DIRINT: this code decomposes Global Horizontal Irradiance (GHI) into Direct Normal Irradiance (DNI) and Diffuse Horizontal Irradiance (DHI).
    - PV_model: This code estimates the electrical output of a photovoltaic panel, based on its given characteristics, using the decomposition of GHI.
+     
+ * Subfolders:
+   - 
 
 
 
