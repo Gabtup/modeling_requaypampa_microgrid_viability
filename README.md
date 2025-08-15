@@ -43,6 +43,10 @@ microgrid_part:
 
 This file contains the input data required to model the microgrid using the microgridspy tool (https://microgridspy/documentation.readthedocs.io/en/latest/index.html), as well as the simulation results. 
 
+ * Subfolders:
+    - Demand_Time_Series and RES_Time_Series: These files, structured as required inputs for the microgrid simulation, contain the hourly profiles of, respectively, the electrical demand data and the renewable energy production data for each SSP.
+
+
 
 
 
