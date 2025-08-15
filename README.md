@@ -11,7 +11,7 @@ This folder contains all the codes and compiled results related to climate data 
 
   * Subfolders:
     - model: contains monthly historical data and monthly SSP1 and SSP5 futur data for each climate model at Raquaypampa.
-    - Contains the historical observed climate data for Raquaypampa.
+    - copernicus: ontains the historical observed climate data for Raquaypampa.
     - change_factor: contains the change factor results for each climate model, under each socio-economic scenario.
     - prediction: contains the future climate predictions for each model, along with their averaged values.
 
