@@ -9,4 +9,6 @@ This folder contains all the codes and compiled results related to climate data 
     - change_factor: calculates the change factor between historical and future climate models.
     - prediction_w_cf_day, prediction_w_cf_hour, prediction_w_cf_month: generate future climate predictions adjusted using the calculated change factor.
 
-  * Subfolders : 
+  * Subfolders :
+    - change_factor: contains the change factor results for each climate model, under each socio-economic scenario.
+    - prediction: contains the future climate predictions for each model, along with their averaged values.
