@@ -9,6 +9,15 @@ This folder contains all the codes and compiled results related to climate data 
     - change_factor: calculates the change factor between historical and future climate models.
     - prediction_w_cf_day, prediction_w_cf_hour, prediction_w_cf_month: generate future climate predictions adjusted using the calculated change factor.
 
-  * Subfolders :
+  * Subfolders:
     - change_factor: contains the change factor results for each climate model, under each socio-economic scenario.
     - prediction: contains the future climate predictions for each model, along with their averaged values.
+
+demand_part:
+
+This folder contains the electricity demand results for the village under the two socio-economic scenarios. It also includes the codes used to generate these results.
+
+  * Codes:
+    - cold_storage: models thermal storage appliances (refrigerators, freezers) that depend on temperature prediction files for each socio-economic scenario.
+    - t_ind+fan: models all other appliances that do not depend on temperature predictions, as well as the village fans, which are influenced by temperature predictions.
+    - demand_all: aggregates the results from the two previous codes to simulate the village’s total electricity demand.
