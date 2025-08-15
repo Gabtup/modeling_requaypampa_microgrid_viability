@@ -15,9 +15,20 @@ This folder contains all the codes and compiled results related to climate data 
 
 demand_part:
 
-This folder contains the electricity demand results for the village under the two socio-economic scenarios. It also includes the codes used to generate these results.
+This folder contains the electricity demand results for the community under the two socio-economic scenarios. It also includes the codes used to generate these results.
 
   * Codes:
     - cold_storage: models thermal storage appliances (refrigerators, freezers) that depend on temperature prediction files for each socio-economic scenario.
     - t_ind+fan: models all other appliances that do not depend on temperature predictions, as well as the village fans, which are influenced by temperature predictions.
     - demand_all: aggregates the results from the two previous codes to simulate the village’s total electricity demand.
+
+  * The subfolders contain the output of the demand_all code, providing annual electricity demand profiles for each socio-economic scenario.
+
+RES_part:
+
+This folder contains the codes and data required to develop the photovoltaic production profile of the microgrid.
+
+
+
+
+
