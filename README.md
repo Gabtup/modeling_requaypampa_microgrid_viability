@@ -48,6 +48,7 @@ This file contains the input data required to model the microgrid using the micr
     - results: This folder contains a summary of the simulation results and the microgrid dispatch profiles for each SSP scenario. The results are organized according to the years with maximum and minimum irradiation. Additionally, two diesel generator formulations are used: the Linear Programming (LP) formulation and the Mixed-Integer Linear Programming (MILP) formulation for a 10 kW nominal diesel generator (MILP_10k).
 
 
+For questions, feedback, or collaboration inquiries, please contact gabin.balhan@uliege.be
 
 
 
