@@ -1,0 +1,23 @@
+;;;;Total;Step 1;Step 2;Step 3;Step 4
+Weighted Net present cost;System;-;kUSD;85,684;-;-;-;-
+Net present cost ;System;1;kUSD;85,684;-;-;-;-
+Total Investment cost;System;-;kUSD;68,104;-;-;-;-
+Total fixed O&M cost;System;-;kUSD;8,553;-;-;-;-
+Total variable O&M cost;System;1;kUSD;9,135;-;-;-;-
+Salvage value;System;-;kUSD;-0,109;-;-;-;-
+Levelized Cost of Energy ;System;-;USD/kWh;0,6221;-;-;-;-
+Levelized Cost of Energy scenarios;System;1;USD/kWh;0,6221;-;-;-;-
+Investment cost;Solar PV;-;kUSD;13,163;11,225;1,269;0,482;0,188
+;Battery bank;-;kUSD;54,168;46,245;5,183;1,976;0,764
+;Diesel Genset 1;-;kUSD;0,773;0,673;0,056;0,033;0,011
+Fixed cost;Solar PV;-;kUSD;1,053;-;-;-;-
+;Battery bank;-;kUSD;7,225;-;-;-;-
+;Diesel Genset 1;-;kUSD;0,275;-;-;-;-
+Lost load cost;System;1;kUSD;0;-;-;-;-
+Replacement cost;Battery bank;1;kUSD;1,049;-;-;-;-
+Fuel cost;Diesel;1;kUSD;8,087;-;-;-;-
+Fuel CO2 emission;System;1;ton;334,093;-;-;-;-
+RES CO2 emission;RES;-;ton;0;-;-;-;-
+GEN CO2 emission;GEN;-;ton;0;-;-;-;-
+BESS CO2 emission;BESS;-;ton;0;-;-;-;-
+TOTAL CO2 emission;System;1;ton;334,093;-;-;-;-
