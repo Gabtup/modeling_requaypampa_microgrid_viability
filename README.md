@@ -28,7 +28,11 @@ This folder contains the electricity demand results for the community under the 
 
 RES_part:
 
-This folder contains the codes and data required to develop the photovoltaic production profile of the microgrid.
+This folder contains the codes and resulting data required to develop the photovoltaic production profile of the microgrid for both the sunniest year (max.) and the least sunny year (min.) of each SSP.
+
+ * Codes:
+   - DIRINT: this code decomposes Global Horizontal Irradiance (GHI) into Direct Normal Irradiance (DNI) and Diffuse Horizontal Irradiance (DHI).
+   - PV_model: 
 
 
 
