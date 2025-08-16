@@ -10,13 +10,12 @@ import pandas as pd
 from ramp import User, UseCase
 from tqdm import tqdm
 
-# === Charger les données de température === 
+# === Load temperature data === 
 temperature_df = pd.read_csv(
     "/Volumes/evelyn_hv62/part1/result/prediction/ssp_126/t/mean_temperature_hourly/temperature_hourly_2026-2045.csv", 
     parse_dates=["datetime"]
 )
 
-# === Ajouter colonne "date" et "year" ===
 temperature_df["date"] = temperature_df["datetime"].dt.date
 temperature_df["year"] = temperature_df["datetime"].dt.year
 
@@ -42,7 +41,6 @@ A_freezer = 4.18
 
 i = 0  # Index pour la croissance annuelle
 
-# === Boucle par année ===
 for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annuelle"):
     Fridge_cold = []
 
@@ -73,7 +71,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         nb_freezer = 5
         C = User("Freezer Shop", nb_freezer)
         
-        # FRIGO 
+        # FRIDGE HOUSEHOLD 
         for start_minute in range(0, nb_minutes, 30):
             end_minute = start_minute + 30
             index_temp = end_minute - 1
@@ -97,7 +95,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
             W_el_fridge = Q_ech_fridge/cop_fridge 
             t_fridge = round(((W_el_fridge*30)-150)/195)
             
-            # Appliquer un facteur de puissance en fonction du temps de la journée
+            # Apply a power factor depending on the time of day
             power_multiplier = 1.2 if 360 <= start_minute <= 480 or 1080 <= start_minute <= 1200 else 1
             power_fridge = int(200 * power_multiplier)
             
@@ -127,7 +125,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
                 fridge.specific_cycle_1(p_11=200 * power_multiplier, t_11=1, p_12=5 * power_multiplier, t_12=29, r_c1=0)
                 
                 
-        # FRIGO MAGASIN
+        # FRIDGE SHOP
         for start_minute in range(0, nb_minutes, 30):
             end_minute = start_minute + 30
             index_temp = end_minute - 1
@@ -151,7 +149,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
             t_fridge = round(((W_el_fridge*30)-150)/315)
             
             
-            # Appliquer un facteur de puissance en fonction du temps de la journée
+            # Apply a power factor depending on the time of day
             power_multiplier = 1.4 if 480 <= start_minute <= 1200 else 1
             power_fridge = int(320 * power_multiplier)
             
@@ -180,7 +178,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
                 fridge.specific_cycle_1(p_11=320 * power_multiplier, t_11=1, p_12=5 * power_multiplier, t_12=29, r_c1=0)
                 
         
-        # FRIGO HOSTO
+        # FRIDGE HOSPITAL
         for start_minute in range(0, nb_minutes, 30):
             end_minute = start_minute + 30
             index_temp = end_minute - 1
@@ -203,7 +201,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
             W_el_fridge = Q_ech_fridge/cop_fridge 
             t_fridge = round(((W_el_fridge*30)-150)/261)
             
-            # Appliquer un facteur de puissance en fonction du temps de la journée
+            # Apply a power factor depending on the time of day
             power_multiplier = 1.45 if 480 <= start_minute <= 1080 else 1
             power_fridge = int(281 * power_multiplier)
             
@@ -233,7 +231,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         
         
         
-        # CONGEL MAGASIN
+         # FREEZER SHOP
         for start_minute in range(0, nb_minutes, 30):
             end_minute = start_minute + 30
             index_temp = end_minute - 1
@@ -256,7 +254,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
             W_el_freezer = Q_ech_freezer/cop_freezer
             t_freezer = round(((W_el_freezer*30)-150)/205)
 
-            # Appliquer un facteur de puissance en fonction du temps de la journée
+            # Apply a power factor depending on the time of day
             power_multiplier = 1.3 if 480 <= start_minute <= 1200 else 1 
             power_freezer = int(210 * power_multiplier)
             
@@ -297,7 +295,6 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         Profiles_array_cold = uc_cold.generate_daily_load_profiles(flat=False)
         flat_load_cold = Profiles_array_cold.flatten()
 
-        # Appliquer seuil dynamique par minute
         for minute in range(len(flat_load_cold)):
             min_multiplier_fridge = 6 if (360 <= start_minute <= 480 or 1080 <= start_minute <= 1200) else 5
             min_multiplier_freezer = 6.5 if 480 <= start_minute <= 1200 else 5
@@ -315,7 +312,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
                 flat_load_cold[minute] = min_value 
         
         
-        # Lissage glissant de 60 minutes avec padding miroir
+        # Rolling smoothing over 60 minutes with mirror padding
         window_size = 60
         pad = window_size // 2
         series = pd.Series(flat_load_cold)
@@ -331,11 +328,11 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         })
         Fridge_cold.append(df_profile_cold)
 
-    # Sauvegarde annuelle
+    # Annual save
     if Fridge_cold:
         year_df_final = pd.concat(Fridge_cold, ignore_index=True)
         year_df_final.to_csv(
             f"/Volumes/evelyn_hv62/part2/demand/cold/ssp126/demand_cold_{year}.csv", index=False)
-        print(f"✅ Fichier pour {year} enregistré.")
+        print(f"File for {year} loaded.")
 
     i += 1
