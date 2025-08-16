@@ -1,4 +1,4 @@
-# modeling_requaypampa_microgrid_viability
+# Requaypampa microgrid viability modelisation
 This repository provides access to the codes and data used in a feasibility analysis of a microgrid in Raquaypampa, Bolivia, under various socio-economic contexts (SSP5 and SSP1). It contains four files, each representing one of the successive stages in the microgrid modeling process, presented in sequential order.
 
 # Climatical_part
@@ -44,5 +44,6 @@ Contains input data required to model the microgrid using [microgridspy](https:/
   - `results`: summary of simulation results and dispatch profiles. Organized by max/min irradiation years. Two diesel generator formulations are used: Linear Programming (LP) and Mixed-Integer Linear Programming for a 10 kW nominal generator (MILP_10k).
 
 ---
+# Contact
 
 For questions, feedback, or collaboration inquiries, please contact gabin.balhan@uliege.be
