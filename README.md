@@ -37,7 +37,7 @@ This folder contains the codes and resulting data required to develop the photov
   - `PV_prod`: contains the defined PV panel electrical production for each scenario.
 
 # Microgrid_part
-Contains the input data required to model the microgrid using [microgridspy](https://microgridspy.readthedocs.io/en/latest/index.html), as well as the corresponding simulation results.
+Contains the input data required to model the microgrid using microgridspy (https://microgridspy.readthedocs.io/en/latest/index.html), as well as the corresponding simulation results.
 
 
 * **Subfolders:**
