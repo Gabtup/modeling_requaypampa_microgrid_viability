@@ -39,7 +39,7 @@ eta_freezer = 0.6
 U_freezer = 0.42
 A_freezer = 4.18
 
-i = 0  # Index pour la croissance annuelle
+i = 0  # Index for annual growth
 
 for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annuelle"):
     Fridge_cold = []
