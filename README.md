@@ -37,7 +37,7 @@ This folder contains the codes and resulting data required to develop the photov
   - `PV_prod`: contains the defined PV panel electrical production for each scenario.
 
 # Microgrid_part
-Contains input data required to model the microgrid using microgridspy [(https://microgridspy/documentation.readthedocs.io/en/latest/index.html)] and the simulation results.
+Contains input data required to model the microgrid using microgridspy [(https://microgridspy/documentation.readthedocs.io/en/latest/index.html)] (https://microgridspy/documentation.readthedocs.io/en/latest/index.html) and the simulation results.
 
 * **Subfolders:**
   - `Demand_Time_Series` and `RES_Time_Series`: hourly profiles of electricity demand and renewable energy production for each SSP.
