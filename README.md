@@ -19,8 +19,8 @@ This folder contains the electricity demand results for the community under the 
 
 * **Codes:**
   - `cold_storage`: models thermal storage appliances (refrigerators, freezers) that depend on temperature prediction files for each socio-economic scenario.
-  - `t_ind+fan`: models all other appliances that do not depend on temperature predictions, as well as the village fans, which are influenced by temperature predictions.
-  - `demand_all`: aggregates the results from the two previous codes to simulate the village’s total electricity demand.
+  - `t_ind+fan`: models all other appliances that do not depend on temperature predictions, as well as the fans, which are influenced by temperature predictions.
+  - `demand_all`: aggregates the results from the two previous codes to simulate the community’s total electricity demand.
 
 * **Subfolders:** contain the output of the `demand_all` code, providing annual electricity demand profiles for each socio-economic scenario.
 
