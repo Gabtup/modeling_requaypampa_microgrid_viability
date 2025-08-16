@@ -45,6 +45,10 @@ Contains the input data required to model the microgrid using microgridspy (http
   - `results`: summary of simulation results and dispatch profiles. Organized by max/min irradiation years. Two diesel generator formulations are used: Linear Programming (LP) and Mixed-Integer Linear Programming for a 10 kW nominal generator (MILP_10k).
 
 ---
+# Remarque
+
+It is essential to modify the input and output file paths in the code for your personal use in order to run them successfully.
+
 # Contact
 
 For questions, feedback, or collaboration inquiries, please contact gabin.balhan@uliege.be
