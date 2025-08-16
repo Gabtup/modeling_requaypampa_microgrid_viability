@@ -8,7 +8,7 @@ Created on Tue Apr  1 11:46:45 2025
 
 import pandas as pd
 
-# Charger les données
+# Load data
 rsds_df = pd.read_csv(
     "/Volumes/evelyn_hv62/rsds_data_raquaypampa/copernicus_data/copernicus_combined_day/rsds_daily_combined_1981-2010.csv",
     parse_dates=["date"],
