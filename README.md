@@ -15,7 +15,7 @@ This folder contains all the codes and compiled results related to climate data 
   - `prediction`: contains the future climate predictions for each model, along with their averaged values.
 
 # Demand_part
-This folder contains the electricity demand results for the community under the two socio-economic scenarios. It also includes the codes used to generate these results, which are simulated using the \texttt{RAMP} library (\url{https://rampdemand.readthedocs.io/en/latest/index.html}).
+This folder contains the electricity demand results for the community under the two socio-economic scenarios. It also includes the codes used to generate these results, which are simulated using the RAMP library (\url{https://rampdemand.readthedocs.io/en/latest/index.html}).
 
 * **Codes:**
   - `cold_storage`: models thermal storage appliances (refrigerators, freezers) that depend on temperature prediction files for each socio-economic scenario.
