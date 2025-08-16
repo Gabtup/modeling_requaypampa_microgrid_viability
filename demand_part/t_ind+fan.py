@@ -10,18 +10,16 @@ import pandas as pd
 from ramp import User, UseCase
 from tqdm import tqdm
 
-# === Charger les données de température ===
+# === Load temperature data ===
 temperature_df = pd.read_csv(
     "/Volumes/evelyn_hv62/part1/result/prediction/ssp585/t/hour/prediction_2026-2045.csv",
     parse_dates=["datetime"]
 )
 
-# === Ajouter colonne "date" et "year" ===
 temperature_df["date"] = temperature_df["datetime"].dt.date
 temperature_df["year"] = temperature_df["datetime"].dt.year
 i = 0
 
-# === Boucle par année ===
 for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annuelle"):
     all_profiles = []
     # --- Sélectionner les données de l'année en cours ---
