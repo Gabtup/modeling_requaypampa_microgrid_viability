@@ -34,7 +34,7 @@ This folder contains the codes and resulting data required to develop the photov
 * **Subfolders:**
   - `irradiation`, `temperature`: provide the maximum and minimum irradiation values and corresponding temperatures for each scenario.
   - `pv_input`: structured as inputs for `PV_model`, with adjusted max/min irradiation and temperature values.
-  - `PV_prod`: contains the PV production output for each scenario, representing a single predefined PV panel.
+  - `PV_prod`: contains the defined PV panel electrical production for each scenario.
 
 # Microgrid_part
 Contains input data required to model the microgrid using [microgridspy](https://microgridspy/documentation.readthedocs.io/en/latest/index.html) and the simulation results.
