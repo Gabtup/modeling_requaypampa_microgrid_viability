@@ -18,14 +18,12 @@ temperature_df = pd.read_csv(
 
 temperature_df["date"] = temperature_df["datetime"].dt.date
 temperature_df["year"] = temperature_df["datetime"].dt.year
-i = 0
+i = 0 # Index for annual growth
 
 for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annuelle"):
     all_profiles = []
-    # --- Sélectionner les données de l'année en cours ---
     year_df = temperature_df[temperature_df["year"] == year]
 
-    # --- Boucle sur chaque jour de l'année ---
     for current_date in year_df["date"].unique():
         daily_df = year_df[year_df["date"] == current_date]
         hourly_temperatures = daily_df["T(°C)"].values
@@ -37,7 +35,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         temperatures_minute = np.repeat(hourly_temperatures, 60)
         nb_minutes = len(temperatures_minute)
         
-        # Activer l'école du 20 janvier au 7 juillet et du 19 juillet au 2 décembre pour toutes les années
+        # school time
         school_start_1 = pd.to_datetime(f"{year}-01-20")
         school_end_1 = pd.to_datetime(f"{year}-07-07")
         school_start_2 = pd.to_datetime(f"{year}-07-19")
@@ -47,11 +45,11 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         cold_start = pd.to_datetime(f"{year}-05-01")
         cold_end = pd.to_datetime(f"{year}-09-30")
         
-        # Activer période de plantation du 15 octobre au 31 decembre
+        # planting season
         plant_start = pd.to_datetime(f"{year}-10-15")
         plant_end = pd.to_datetime(f"{year}-12-31")
         
-        # Activer période de recolte du 1 mars au 15 mai
+        # harvesting season
         harvest_start = pd.to_datetime(f"{year}-03-01")
         harvest_end = pd.to_datetime(f"{year}-05-15")
         
@@ -86,7 +84,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
 
         WS = User("Workshop", 1)
         
-        #HOUSEHOLD LOW OK
+        #HOUSEHOLD LOW 
         
         H_indoor_bulb = HH.add_appliance(number=2, power=7, num_windows=2, func_time=360, 
                                         time_fraction_random_variability=0.2, func_cycle=10,
@@ -103,7 +101,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
                                   wd_we_type=2, occasional_use=0.5) 
         H_Radio.windows([390,450], [1080,1260], random_var_w=0.35)
         
-        #HOUSEHOLD HIGH OK
+        #HOUSEHOLD HIGH 
         
         H_indoor_bulb = HH.add_appliance(number=4, power=7, num_windows=2, func_time=360, 
                                         time_fraction_random_variability=0.2, func_cycle=10,
@@ -135,7 +133,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
                                 wd_we_type=2, occasional_use=0.33) 
         H_PC.windows([960,1200], random_var_w=0.35)
         
-        #SCHOOL OK
+        #SCHOOL 
         
         if (school_start_1 <= current_date_dt <= school_end_1) or (school_start_2 <= current_date_dt <= school_end_2):
             
@@ -201,7 +199,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
                                                  flat="yes")
                         HC_fan.windows([start_minute,end_minute])
             
-        #HOSPITAL OK
+        #HOSPITAL 
         
         HC_indoor_bulb = HC.add_appliance(number=20, power=7, num_windows=2, func_time=690,
                                           time_fraction_random_variability=0.2, func_cycle=10,
@@ -290,7 +288,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
                     HC_fan.windows([start_minute,end_minute])
             
         
-        #RESTAURANT OK
+        #RESTAURANT 
         
         R_indoor_bulb = R.add_appliance(number=2, power=7, num_windows=2, func_time=360,
                                     time_fraction_random_variability=0.2, func_cycle=60,
@@ -341,7 +339,7 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         
         WS_Washing_machine.windows([480,1080], random_var_w=0.35) 
         
-        #ATELIER 
+        #WORKSHOP
 
         WS_welding_machine = WS.add_appliance(number=1, power=5000, num_windows=1, func_time=120,
                                               time_fraction_random_variability=0.2, func_cycle=15,
@@ -379,11 +377,11 @@ for year in tqdm(sorted(temperature_df["year"].unique()), desc="Simulation annue
         all_profiles.append(df_profile_all)
         
 
-    # --- Export annuel ---
+    # --- Annual Export ---
     if all_profiles:
         year_df_final = pd.concat(all_profiles, ignore_index=True)
         year_df_final.to_csv((f"/Volumes/evelyn_hv62/part2/demand/t_ind/year_by_year/demand_t_ind_{year}.csv"), index=False)
-        print(f"✅ Fichier pour {year} enregistré.")
+        print(f"File for {year} loaded.")
     
     i += 1    
     
